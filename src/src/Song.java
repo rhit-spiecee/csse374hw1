@@ -23,4 +23,8 @@ public class Song {
         this.requests.clear();
         this.isBeingSung = false;
     }
+
+    public void updateIsBeingSung() {
+        this.isBeingSung = true;
+    }
 }

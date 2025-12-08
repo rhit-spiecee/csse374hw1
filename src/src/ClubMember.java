@@ -17,6 +17,7 @@ public class ClubMember extends Person {
         for (Song song : songs) {
             if(Objects.equals(song.memberId, this.id)){
                 System.out.println(song.toString());
+                song.updateIsBeingSung();
             }
         }
     }
