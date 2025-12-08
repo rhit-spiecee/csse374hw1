@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ClubMember extends Person {
     private String id;
@@ -12,15 +13,15 @@ public class ClubMember extends Person {
         return "";
     }
 
-    public void generateSongReport(ArrayList<String> requests){
-        for (String request : requests) {
-            if (request.equals(this.id)) {
-                System.out.println(request);
+    public void generateSongReport(ArrayList<Song> songs) {
+        for (Song song : songs) {
+            if(Objects.equals(song.memberId, this.id)){
+                System.out.println(song.toString());
             }
         }
     }
 
-    public void reportSongDelivered(String nameOfSong, String sweetheartName){
-
+    public void reportSongDelivered(Song song){
+        song.clearRequests();
     }
 }

@@ -1,19 +1,26 @@
 import java.util.ArrayList;
 
 public class Song {
-    private String name;
-    private String artist;
+    private final String name;
+    private final String artist;
     private ArrayList<String> requests;
-    private int memberId;
+    public String memberId;
+    private boolean isBeingSung;
 
-    public Song(String name, String artist, int memberId) {
+    public Song(String name, String artist, String memberId) {
         this.name = name;
         this.artist = artist;
         this.memberId = memberId;
-        requests = new ArrayList<>();
+        this.requests = new ArrayList<>();
+        this.isBeingSung = false;
     }
 
     public void addRequest(String sweetheartName) {
-        requests.add(sweetheartName);
+        this.requests.add(sweetheartName);
+    }
+
+    public void clearRequests() {
+        this.requests.clear();
+        this.isBeingSung = false;
     }
 }
