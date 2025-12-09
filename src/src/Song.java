@@ -27,4 +27,17 @@ public class Song {
     public void updateIsBeingSung() {
         this.isBeingSung = true;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getRequest() {
+        return this.requests.toString();
+    }
+
+    @Override
+    public String toString(){
+        return this.name + " by " + this.artist + ": singing to " + getRequest();
+    }
 }

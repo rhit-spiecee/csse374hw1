@@ -25,4 +25,8 @@ public class ClubMember extends Person {
     public void reportSongDelivered(Song song){
         song.clearRequests();
     }
+
+    public String  getID() {
+        return this.id;
+    }
 }
