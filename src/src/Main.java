@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     private static ArrayList<ClubMember> listOfClubMember = new ArrayList<ClubMember>();
     private static ArrayList<Customer> listOfCustomer = new ArrayList<Customer>();
+    private static ArrayList<Admin> listOfAdmin = new ArrayList<Admin>();
     private static ArrayList<Song> listOfSongs = new ArrayList<Song>();
 
     public static void main(String[] args) {
@@ -124,9 +125,29 @@ public class Main {
 
             } else if (userInput.equals("3")) {
                 System.out.println("You selected: Club members – Report back that your songs are done");
+                System.out.println("Please Enter your User ID");
+                userInput = scanner.next();
+                for (ClubMember person : listOfClubMember) {
+                    if (person.getID().equals(userInput)) {
+                        System.out.println("Please enter the name of the song you delivered");
+                        userInput = scanner.next();
+                        for (Song s : listOfSongs) {
+                            if (s.getName().contains(userInput)) {
+                                if (person.reportSongDelivered(s)) {
+                                    System.out.println("Successfully delivered the song");
+                                } else {
+                                    System.out.println("Failed to deliver the song");
+                                }
+                            }
+                        }
+                    }
+                }
 
             } else if (userInput.equals("4")) {
                 System.out.println("You selected: Admin - Show data for all club members");
+                Admin admin = listOfAdmin.get(0);
+                admin.showDataForAllClubMembers(listOfClubMember);
+
 
             } else {
                 System.out.println("Enter valid options though 1-4");
@@ -152,6 +173,8 @@ public class Main {
         listOfSongs.add(unchainedMelody);
         Song perfect = new Song("Perfect", "Ed Sheeran", "anny1");
         listOfSongs.add(perfect);
+
+        listOfAdmin.add(new Admin("admin@email.com"));
 
 
         //System.out.println("testing arraylists: " + listOfSongs.toString() + " " + listOfPeople.toString());

@@ -6,4 +6,7 @@ public class Person {
         this.emailAddress = emailAddress;
     }
 
+    protected String getEmail() {
+        return this.emailAddress;
+    }
 }

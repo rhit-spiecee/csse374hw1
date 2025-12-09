@@ -10,7 +10,7 @@ public class ClubMember extends Person {
     }
 
     public String toString(){
-        return "";
+        return "Email: " + super.getEmail() + " ID: " + this.id;
     }
 
     public void generateSongReport(ArrayList<Song> songs) {
@@ -22,8 +22,9 @@ public class ClubMember extends Person {
         }
     }
 
-    public void reportSongDelivered(Song song){
+    public boolean reportSongDelivered(Song song){
         song.clearRequests();
+        return true;
     }
 
     public String  getID() {

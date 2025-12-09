@@ -5,11 +5,9 @@ public class Admin extends Person {
         super(emailAddress);
     }
 
-    public void showDataForAllClubMembers(ArrayList<Person> listOfPeople){
-        for (Person p : listOfPeople) {
-            if (p instanceof ClubMember clubMember) {
-                System.out.println(clubMember.toString());
-            }
+    public void showDataForAllClubMembers(ArrayList<ClubMember> listOfClubMember){
+        for (ClubMember cm : listOfClubMember) {
+            System.out.println(cm.toString());
         }
     }
 }
