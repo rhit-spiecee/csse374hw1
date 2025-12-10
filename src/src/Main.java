@@ -17,6 +17,7 @@ public class Main {
         initializeList();
 
         while (mainLoopRunning) {
+            System.out.println();
             System.out.print("Welcome to the Serenaders’ Music Club Valentine’s Song System!\n" +
                     "Select the action to do:\n" +
                     "1 - Customers – Order a song for Valentine’s Day\n" +
@@ -28,6 +29,9 @@ public class Main {
             String userInput = scanner.nextLine();
 
             if (userInput.equals("1")) {
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.println("You selected: Customer - Order a song for Valentine’s Day");
 
                 String cusEmailAddr;
@@ -59,7 +63,7 @@ public class Main {
                 cusSweetheartName = userInput;
                 System.out.println("you entered: " + cusSweetheartName);
                 System.out.println("You have entered all the required information!");
-                System.out.println("Customer created");
+                System.out.println();
 
                 System.out.println("Order a song for Valentine’s Day...\n" +
                         "Select the song from this list:\n" +
@@ -76,7 +80,7 @@ public class Main {
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("Can't Help Falling in Love")) {
                                 s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
+                                //System.out.println(s.getRequest());
                             }
                         }
                         break;
@@ -85,7 +89,7 @@ public class Main {
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("At Last")) {
                                 s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
+                                //System.out.println(s.getRequest());
                             }
                         }
                         break;
@@ -94,7 +98,7 @@ public class Main {
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("Unchained Melody")) {
                                 s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
+                                //System.out.println(s.getRequest());
                             }
                         }
                         break;
@@ -103,13 +107,15 @@ public class Main {
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("Perfect")) {
                                 s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
+                                //System.out.println(s.getRequest());
                             }
                         }
                         break;
                     default:
                         System.out.println("Enter valid options though 1-4");
                 }
+                System.out.println("Hit Enter to return to menu");
+                userInput = scanner.nextLine();
 
 
             } else if (userInput.equals("2")) {
