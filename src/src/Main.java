@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     private static ArrayList<ClubMember> listOfClubMember = new ArrayList<ClubMember>();
-    private static ArrayList<Customer> listOfCustomer = new ArrayList<Customer>();
     private static ArrayList<Admin> listOfAdmin = new ArrayList<Admin>();
     private static ArrayList<Song> listOfSongs = new ArrayList<Song>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Boolean mainLoopRunning = true;
+        boolean mainLoopRunning = true;
 
         //initializing clubmembers into list of person to associate with song that they are singing
         //initializing options of songs and associating it with the memeber who sings the song.
@@ -70,21 +69,24 @@ public class Main {
 
                         "Your choice (1 – 4):\n");
                 userInput = scanner.nextLine();
+                String selectedSongName;
                 switch (userInput) {
                     case "1":
+                        selectedSongName = "Can't Help Falling in Love";
                         System.out.println("You selected: 1 - \"Can't Help Falling in Love\" by Elvis Presley");
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("Can't Help Falling in Love")) {
-                                s.addRequest(cusSweetheartName);
+                                s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
                                 System.out.println(s.getRequest());
                             }
                         }
                         break;
                     case "2":
+                        selectedSongName = "Ar Last";
                         System.out.println("You selected: 2 - \"At Last\" by Etta James");
                         for (Song s : listOfSongs) {
                             if (s.getName().equals("At Last")) {
-                                s.addRequest(cusSweetheartName);
+                                s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
                                 System.out.println(s.getRequest());
                             }
                         }

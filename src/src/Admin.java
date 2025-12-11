@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
-public class Admin extends Person {
+public class Admin {
+    private String emailAddress;
+
     public Admin(String emailAddress) {
-        super(emailAddress);
+        this.emailAddress = emailAddress;
     }
 
     public void showDataForAllClubMembers(ArrayList<ClubMember> listOfClubMember){

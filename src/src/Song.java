@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Song {
     private final String name;
     private final String artist;
-    private ArrayList<String> requests;
+    private ArrayList<Order> requests;
     public String memberId;
     private boolean isBeingSung;
 
@@ -15,8 +15,8 @@ public class Song {
         this.isBeingSung = false;
     }
 
-    public void addRequest(String sweetheartName) {
-        this.requests.add(sweetheartName);
+    public void addRequest(Order newOrder) {
+        this.requests.add(newOrder);
     }
 
     public void clearRequests() {

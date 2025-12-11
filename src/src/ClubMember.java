@@ -1,16 +1,17 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ClubMember extends Person {
+public class ClubMember{
     private String id;
+    private String emailAddress;
 
     public ClubMember(String emailAddress, String id) {
-        super(emailAddress);
+        this.emailAddress = emailAddress;
         this.id = id;
     }
 
     public String toString(){
-        return "Email: " + super.getEmail() + " ID: " + this.id;
+        return "Email: " + this.emailAddress + " ID: " + this.id;
     }
 
     public void generateSongReport(ArrayList<Song> songs) {
