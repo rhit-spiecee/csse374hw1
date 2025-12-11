@@ -69,48 +69,39 @@ public class Main {
 
                         "Your choice (1 – 4):\n");
                 userInput = scanner.nextLine();
-                String selectedSongName;
+                String selectedSongName = "";
+                String selectedSongArtist = "";
+                String selectedNum = "";
                 switch (userInput) {
                     case "1":
                         selectedSongName = "Can't Help Falling in Love";
-                        System.out.println("You selected: 1 - \"Can't Help Falling in Love\" by Elvis Presley");
-                        for (Song s : listOfSongs) {
-                            if (s.getName().equals("Can't Help Falling in Love")) {
-                                s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
-                                System.out.println(s.getRequest());
-                            }
-                        }
+                        selectedSongArtist = "Elvis Presley";
+                        selectedNum = "1";
                         break;
                     case "2":
-                        selectedSongName = "Ar Last";
-                        System.out.println("You selected: 2 - \"At Last\" by Etta James");
-                        for (Song s : listOfSongs) {
-                            if (s.getName().equals("At Last")) {
-                                s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
-                                System.out.println(s.getRequest());
-                            }
-                        }
+                        selectedSongName = "At Last";
+                        selectedSongArtist = "Etta James";
+                        selectedNum = "2";
                         break;
                     case "3":
-                        System.out.println("You selected: 3 - \"Unchained Melody\" by The Righteous Brothers");
-                        for (Song s : listOfSongs) {
-                            if (s.getName().equals("Unchained Melody")) {
-                                s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
-                            }
-                        }
+                        selectedSongName = "Unchained Melody";
+                        selectedSongArtist = "The Righteous Brothers";
+                        selectedNum = "3";
                         break;
                     case "4":
-                        System.out.println("You selected: 4 - \"Perfect\" by Ed Sheeran");
-                        for (Song s : listOfSongs) {
-                            if (s.getName().equals("Perfect")) {
-                                s.addRequest(cusSweetheartName);
-                                System.out.println(s.getRequest());
-                            }
-                        }
+                        selectedSongName = "Perfect";
+                        selectedSongArtist = "Ed Sheeran";
+                        selectedNum = "4";
                         break;
                     default:
                         System.out.println("Enter valid options though 1-4");
+                }
+                System.out.println("You selected: " + selectedNum + " - \""+ selectedSongName +" \" by " + selectedSongArtist);
+                for (Song s : listOfSongs) {
+                    if (s.getName().equals("Can't Help Falling in Love")) {
+                        s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
+                        System.out.println(s.getRequest());
+                    }
                 }
 
 
@@ -163,9 +154,7 @@ public class Main {
         createClubMembers("eric");
         createClubMembers("john");
         createClubMembers("anny");
-
-        Customer newCustomer = new Customer("newCustomer@email.com");
-        listOfCustomer.add(newCustomer);
+        
 
         Song cantHelpFallingInLove = new Song("Can't Help Falling in Love", "Elvis Presley", "david1");
         listOfSongs.add(cantHelpFallingInLove);
