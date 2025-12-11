@@ -4,13 +4,11 @@ public class Song {
     private final String name;
     private final String artist;
     private ArrayList<Order> requests;
-    public String memberId;
     private boolean isBeingSung;
 
-    public Song(String name, String artist, String memberId) {
+    public Song(String name, String artist) {
         this.name = name;
         this.artist = artist;
-        this.memberId = memberId;
         this.requests = new ArrayList<>();
         this.isBeingSung = false;
     }
@@ -37,7 +35,11 @@ public class Song {
     }
 
     @Override
-    public String toString(){
-        return this.name + " by " + this.artist + ": singing to " + getRequest();
+    public String toString() {
+        if (!requests.isEmpty()) {
+            return this.name + " by " + this.artist + ": singing to " + getRequest();
+        }else{
+            return "No Requests Found for " + this.name + " by " + this.artist;
+        }
     }
 }

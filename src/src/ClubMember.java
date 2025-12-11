@@ -4,27 +4,29 @@ import java.util.Objects;
 public class ClubMember{
     private String id;
     private String emailAddress;
+    private Song song;
 
-    public ClubMember(String emailAddress, String id) {
+    public ClubMember(String emailAddress, String id, Song song) {
         this.emailAddress = emailAddress;
         this.id = id;
+        this.song = song;
     }
 
     public String toString(){
-        return "Email: " + this.emailAddress + " ID: " + this.id;
+        return "Email: " + this.emailAddress + " ID: " + this.id + " Song Info: " + song.toString();
     }
 
-    public void generateSongReport(ArrayList<Song> songs) {
-        for (Song song : songs) {
-            if(Objects.equals(song.memberId, this.id)){
-                System.out.println(song.toString());
-                song.updateIsBeingSung();
-            }
+    public void generateSongReport() {
+        System.out.println(this.song.toString());
+
+
+    }
+
+    public boolean reportSongDelivered(){
+        if (this.song.getRequest().isBlank()){
+            return false;
         }
-    }
-
-    public boolean reportSongDelivered(Song song){
-        song.clearRequests();
+        this.song.clearRequests();
         return true;
     }
 

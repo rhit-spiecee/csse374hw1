@@ -58,7 +58,7 @@ public class Main {
                 cusSweetheartName = userInput;
                 System.out.println("you entered: " + cusSweetheartName);
                 System.out.println("You have entered all the required information!");
-                System.out.println("Customer created");
+
 
                 System.out.println("Order a song for Valentine’s Day...\n" +
                         "Select the song from this list:\n" +
@@ -72,49 +72,68 @@ public class Main {
                 String selectedSongName = "";
                 String selectedSongArtist = "";
                 String selectedNum = "";
-                switch (userInput) {
-                    case "1":
-                        selectedSongName = "Can't Help Falling in Love";
-                        selectedSongArtist = "Elvis Presley";
-                        selectedNum = "1";
-                        break;
-                    case "2":
-                        selectedSongName = "At Last";
-                        selectedSongArtist = "Etta James";
-                        selectedNum = "2";
-                        break;
-                    case "3":
-                        selectedSongName = "Unchained Melody";
-                        selectedSongArtist = "The Righteous Brothers";
-                        selectedNum = "3";
-                        break;
-                    case "4":
-                        selectedSongName = "Perfect";
-                        selectedSongArtist = "Ed Sheeran";
-                        selectedNum = "4";
-                        break;
-                    default:
-                        System.out.println("Enter valid options though 1-4");
+                boolean userInputIsValid = false;
+                while (!userInputIsValid) {
+                    userInputIsValid = true;
+                    switch (userInput) {
+                        case "1":
+                            selectedSongName = "Can't Help Falling in Love";
+                            selectedSongArtist = "Elvis Presley";
+                            selectedNum = "1";
+                            break;
+                        case "2":
+                            selectedSongName = "At Last";
+                            selectedSongArtist = "Etta James";
+                            selectedNum = "2";
+                            break;
+                        case "3":
+                            selectedSongName = "Unchained Melody";
+                            selectedSongArtist = "The Righteous Brothers";
+                            selectedNum = "3";
+                            break;
+                        case "4":
+                            selectedSongName = "Perfect";
+                            selectedSongArtist = "Ed Sheeran";
+                            selectedNum = "4";
+                            break;
+                        default:
+                            userInputIsValid = false;
+                            System.out.println("Enter valid options though 1-4");
+                            userInput = scanner.next();
+                    }
                 }
-                System.out.println("You selected: " + selectedNum + " - \""+ selectedSongName +" \" by " + selectedSongArtist);
+                System.out.println("You selected: " + selectedNum + " - \"" + selectedSongName + " \" by " + selectedSongArtist);
                 for (Song s : listOfSongs) {
                     if (s.getName().equals("Can't Help Falling in Love")) {
                         s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
                         System.out.println(s.getRequest());
                     }
                 }
+                System.out.println("customer order success, going back to main...");
+                System.out.println("_____________________________________________");
 
 
             } else if (userInput.equals("2")) {
                 System.out.println("You selected: Club members – Get a report of requests for your song");
                 System.out.println("Please Enter your User ID");
-                userInput = scanner.next();
-                for (ClubMember person : listOfClubMember) {
-                    if (person.getID().equals(userInput)) {
-                        person.generateSongReport(listOfSongs);
+                boolean userIDIsValid = false;
+                while(!userIDIsValid) {
+                    userInput = scanner.next();
+//                    System.out.println(userInput + " club memebers" + listOfClubMember );
+                    for (ClubMember person : listOfClubMember) {
+                        if (person.getID().equals(userInput)) {
+                            person.generateSongReport();
+                            userIDIsValid = true;
+                            break;
+                        }
                     }
-
+                    if (!userIDIsValid){
+                        System.out.println("Please Enter Valid User ID");
+                        userIDIsValid = false;
+                    }
                 }
+                System.out.println("Request report generated, going back to main...");
+                System.out.println("_____________________________________________");
 
             } else if (userInput.equals("3")) {
                 System.out.println("You selected: Club members – Report back that your songs are done");
@@ -122,17 +141,12 @@ public class Main {
                 userInput = scanner.next();
                 for (ClubMember person : listOfClubMember) {
                     if (person.getID().equals(userInput)) {
-                        System.out.println("Please enter the name of the song you delivered");
-                        userInput = scanner.next();
-                        for (Song s : listOfSongs) {
-                            if (s.getName().contains(userInput)) {
-                                if (person.reportSongDelivered(s)) {
-                                    System.out.println("Successfully delivered the song");
-                                } else {
-                                    System.out.println("Failed to deliver the song");
-                                }
-                            }
+                        if(person.reportSongDelivered()){
+                            System.out.println("Successfully delivered song");
+                        }else{
+                            System.out.println("Failed to deliver song");
                         }
+
                     }
                 }
 
@@ -150,29 +164,30 @@ public class Main {
     }
 
     private static void initializeList() {
-        createClubMembers("david");
-        createClubMembers("eric");
-        createClubMembers("john");
-        createClubMembers("anny");
-        
 
-        Song cantHelpFallingInLove = new Song("Can't Help Falling in Love", "Elvis Presley", "david1");
+
+
+        Song cantHelpFallingInLove = new Song("Can't Help Falling in Love", "Elvis Presley");
         listOfSongs.add(cantHelpFallingInLove);
-        Song atLeast = new Song("At Last", "Etta James", "eric1");
-        listOfSongs.add(atLeast);
-        Song unchainedMelody = new Song("Unchained Melody", "The Righteous Brothers", "john1");
+        Song atLast = new Song("At Last", "Etta James");
+        listOfSongs.add(atLast);
+        Song unchainedMelody = new Song("Unchained Melody", "The Righteous Brothers");
         listOfSongs.add(unchainedMelody);
-        Song perfect = new Song("Perfect", "Ed Sheeran", "anny1");
+        Song perfect = new Song("Perfect", "Ed Sheeran");
         listOfSongs.add(perfect);
 
+        createClubMembers("david", cantHelpFallingInLove);
+        createClubMembers("eric", atLast);
+        createClubMembers("john", unchainedMelody);
+        createClubMembers("anny", perfect);
         listOfAdmin.add(new Admin("admin@email.com"));
 
 
         //System.out.println("testing arraylists: " + listOfSongs.toString() + " " + listOfPeople.toString());
     }
 
-    private static void createClubMembers(String name) {
-        ClubMember newMember = new ClubMember(name + "@email.com", name + "1");
+    private static void createClubMembers(String name, Song song) {
+        ClubMember newMember = new ClubMember(name + "@email.com", name + "1", song);
         listOfClubMember.add(newMember);
     }
 
