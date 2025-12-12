@@ -11,10 +11,6 @@ public class Order {
         this.songName = songName;
     }
 
-    public void orderSong(Song song){
-
-    }
-
     @Override
     public String toString() {
         return "Order: " + "Email Address: " + emailAddress + ", Credit Card Number: " + creditCardNumber + ", Sweetheart Name: " + sweetHeartName;
