@@ -25,6 +25,7 @@ public class ClubMember{
             return false;
         }
         this.song.clearRequests();
+        System.out.println("Credit cards charged and emails sent");
         return true;
     }
 
