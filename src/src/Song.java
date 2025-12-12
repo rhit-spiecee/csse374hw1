@@ -22,10 +22,6 @@ public class Song {
         this.isBeingSung = false;
     }
 
-    public void updateIsBeingSung() {
-        this.isBeingSung = true;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -37,9 +33,14 @@ public class Song {
     @Override
     public String toString() {
         if (!requests.isEmpty()) {
+            this.isBeingSung = true;
             return this.name + " by " + this.artist + ": singing to " + getRequest();
         }else{
             return "No Requests Found for " + this.name + " by " + this.artist;
         }
+    }
+
+    public boolean getIsBeingSung() {
+        return this.isBeingSung;
     }
 }

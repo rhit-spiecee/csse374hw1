@@ -18,8 +18,6 @@ public class ClubMember{
 
     public void generateSongReport() {
         System.out.println(this.song.toString());
-
-
     }
 
     public boolean reportSongDelivered(){

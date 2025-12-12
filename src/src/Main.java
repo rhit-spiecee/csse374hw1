@@ -105,7 +105,11 @@ public class Main {
                 System.out.println("You selected: " + selectedNum + " - \"" + selectedSongName + " \" by " + selectedSongArtist);
                 for (Song s : listOfSongs) {
                     if (s.getName().equals("Can't Help Falling in Love")) {
-                        s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
+                        if(!s.getIsBeingSung()){
+                            s.addRequest(new Order(cusEmailAddr, cusCreditCardNum, cusSweetheartName, selectedSongName));
+                        }else{
+                            System.out.println("Song unavailable for purchase");
+                        }
                         System.out.println(s.getRequest());
                     }
                 }
