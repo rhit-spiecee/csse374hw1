@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
+//Mainly written by Seokhyun
+
 public class ClubMember{
     private String id;
     private String emailAddress;
     private Song song;
+
 
     public ClubMember(String emailAddress, String id, Song song) {
         this.emailAddress = emailAddress;

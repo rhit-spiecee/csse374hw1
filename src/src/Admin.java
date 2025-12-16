@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//Written by Ethan
+
 public class Admin {
     private String emailAddress;
 

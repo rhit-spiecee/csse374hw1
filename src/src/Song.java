@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 
+//Mainly written by Ethan
+
 public class Song {
     private final String name;
     private final String artist;
     private ArrayList<Order> requests;
     private boolean isBeingSung;
+
 
     public Song(String name, String artist) {
         this.name = name;

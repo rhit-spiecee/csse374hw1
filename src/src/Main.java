@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+//Mainly written by Seokhyun
+
 public class Main {
     private static ArrayList<ClubMember> listOfClubMember = new ArrayList<ClubMember>();
     private static ArrayList<Admin> listOfAdmin = new ArrayList<Admin>();
