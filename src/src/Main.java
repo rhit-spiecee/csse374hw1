@@ -194,10 +194,4 @@ public class Main {
         ClubMember newMember = new ClubMember(name + "@email.com", name + "1", song);
         listOfClubMember.add(newMember);
     }
-
-
-    private static void getCustomerInfo(Scanner scanner) {
-
-
-    }
 }
